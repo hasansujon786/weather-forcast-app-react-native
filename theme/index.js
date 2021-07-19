@@ -19,6 +19,8 @@ export const variables = {
   },
 
   colors: {
+    accent: '#5B21B6',
+    purple800: '#5B21B6',
     orange500: "#FF7F51",
     black600: "#141414",
     black500: "#1D1D1D",
