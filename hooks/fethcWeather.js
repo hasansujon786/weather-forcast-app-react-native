@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../services'
 
-function fethcWeather() {
+function fethcWeather(defaultLocation) {
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -35,6 +35,12 @@ function fethcWeather() {
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    if (defaultLocation) {
+      getWeatherByCityName(defaultLocation)
+    }
+  }, [defaultLocation])
 
   return { data, details, error, loading, getWeatherByCityName }
 }

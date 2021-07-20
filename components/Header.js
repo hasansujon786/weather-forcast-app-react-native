@@ -7,7 +7,7 @@ import {
 import { Feather as Icon } from '@expo/vector-icons'
 import { variables } from '../theme'
 
-const Header = () => {
+const Header = ({ onToggleSearch }) => {
   return (
     <View style={styles.header}>
       <Icon
@@ -17,9 +17,10 @@ const Header = () => {
       />
       <Text style={styles.headerTitle}>Weather Forecast</Text>
       <Icon
-        name='refresh-ccw'
+        name='map-pin'
         size={22}
         color={variables.colors.white500}
+        onPress={()=> onToggleSearch(v => !v)}
       />
     </View>
   )

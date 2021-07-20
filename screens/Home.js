@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   View,
   Animated,
@@ -8,33 +8,31 @@ import {
 
 import Header from '../components/Header'
 import SeachBar from '../components/SearchBar'
-// import Details from '../components/Details'
+import Details from '../components/Details'
 import {
   fadeInTop,
   findOut,
   opacityAnimated,
-  changeColorText,
 } from '../components/animated.js'
 import { variables } from '../theme'
-// import CardStatus from '../../components/CardStatus'
-// import CardMain from '../../components/CardMain'
 
 import fethcWeather from '../hooks/fethcWeather'
+import CardTop from '../components/CardTop'
+import CardStatus from '../components/CardStatus'
 
 
 
 const Home = () => {
+  const [showSearch, setShowSearch] = useState(false)
   const scrollY = new Animated.Value(0)
-  const {getWeatherByCityName, loading, data, details, error} = fethcWeather()
-  console.log(details)
-  console.log(data)
+  const { getWeatherByCityName, loading, data, details, error } = fethcWeather('dhaka')
 
 
   return (
     <View style={styles.container}>
       <View style={styles.cardHeader}>
-        <Header/>
-        <SeachBar loading={loading} onSubmit={getWeatherByCityName}/>
+        <Header onToggleSearch={setShowSearch} />
+        {showSearch && <SeachBar loading={loading} onSubmit={getWeatherByCityName} />}
       </View>
 
       <Animated.View
@@ -48,14 +46,14 @@ const Home = () => {
           },
         ]}
       >
-        {/* {data.uf?.length > 0 ? ( */}
-        {/*   <CardMain data={data} /> */}
-        {/* ) : ( */}
-        {/*     <CardStatus error={error} /> */}
-        {/*   )} */}
+        {data.uf?.length > 0 ? (
+          <CardTop data={data} />
+        ) : (
+            <CardStatus error={error} />
+          )}
       </Animated.View>
 
-      {/* <Details/> */}
+      {data.uf?.length > 0 && <Details details={details} />}
     </View>
   )
 }
