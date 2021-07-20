@@ -31,7 +31,7 @@ export default function App() {
     return (
       <>
         <StatusBar
-          backgroundColor={variables.colors.orange500}
+          backgroundColor={variables.colors.accent}
           barStyle="light-content"
         />
         <Home />

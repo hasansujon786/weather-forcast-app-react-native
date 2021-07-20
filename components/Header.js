@@ -7,7 +7,7 @@ import {
 import { Feather as Icon } from '@expo/vector-icons'
 import { variables } from '../theme'
 
-const Header = ({ onToggleSearch }) => {
+const Header = ({ onToggleSearch, place }) => {
   return (
     <View style={styles.header}>
       <Icon
@@ -15,7 +15,7 @@ const Header = ({ onToggleSearch }) => {
         size={22}
         color={variables.colors.white500}
       />
-      <Text style={styles.headerTitle}>Weather Forecast</Text>
+      <Text style={styles.headerTitle}>{place}</Text>
       <Icon
         name='map-pin'
         size={22}
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    marginTop: 16,
   },
 
   headerTitle: {

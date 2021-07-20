@@ -6,7 +6,6 @@ function fethcWeather(defaultLocation) {
   const [loading, setLoading] = useState(false)
 
   const [data, setData] = useState({})
-  const [details, setDetails] = useState({})
 
   const getWeatherByCityName = async (cityName) => {
     try {
@@ -19,8 +18,7 @@ function fethcWeather(defaultLocation) {
         temp: data.main.temp,
         temp_min: data.main.temp_min,
         temp_max: data.main.temp_max,
-      })
-      setDetails({
+        weather: data.weather,
         wind: data.wind.speed,
         visibility: data.visibility,
         humidity: data.main.humidity,
@@ -42,7 +40,7 @@ function fethcWeather(defaultLocation) {
     }
   }, [defaultLocation])
 
-  return { data, details, error, loading, getWeatherByCityName }
+  return { data, error, loading, getWeatherByCityName }
 }
 
 export default fethcWeather

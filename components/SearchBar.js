@@ -41,7 +41,7 @@ const SearchBar = ({ onSubmit, loading }) => {
       <View style={{ marginLeft: '4%', width: "18%" }}>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => fetchWeather()}
+          onPress={() => onSubmit(value)}
           style={styles.searchBtn}
         >
           {loading ? (

@@ -25,35 +25,39 @@ import CardStatus from '../components/CardStatus'
 const Home = () => {
   const [showSearch, setShowSearch] = useState(false)
   const scrollY = new Animated.Value(0)
-  const { getWeatherByCityName, loading, data, details, error } = fethcWeather('dhaka')
-
+  const { getWeatherByCityName, loading, data, error } = fethcWeather('dhaka')
 
   return (
     <View style={styles.container}>
       <View style={styles.cardHeader}>
-        <Header onToggleSearch={setShowSearch} />
+        <Header place={loading ? 'Fetching data...' : `${data.city}, ${data.uf}`} onToggleSearch={setShowSearch} />
         {showSearch && <SeachBar loading={loading} onSubmit={getWeatherByCityName} />}
       </View>
 
-      <Animated.View
-        style={[
-          styles.body,
-          {
-            marginTop: -140,
-            zIndex: findOut(scrollY),
-            bottom: fadeInTop(scrollY),
-            opacity: opacityAnimated(scrollY),
-          },
-        ]}
-      >
-        {data.uf?.length > 0 ? (
-          <CardTop data={data} />
-        ) : (
-            <CardStatus error={error} />
-          )}
-      </Animated.View>
-
-      {data.uf?.length > 0 && <Details details={details} />}
+      <View style={{
+        backgroundColor: variables.colors.white500,
+        borderTopEndRadius: 20,
+        borderTopStartRadius: 20,
+      }}>
+        <Animated.View
+          style={[
+            styles.body,
+            {
+              zIndex: findOut(scrollY),
+              bottom: fadeInTop(scrollY),
+              opacity: opacityAnimated(scrollY),
+              paddingHorizontal: 0,
+            },
+          ]}
+        >
+          {data.uf?.length > 0 ? (
+            <CardTop data={data} />
+          ) : (
+              <CardStatus error={error} />
+            )}
+        </Animated.View>
+        {data.uf?.length > 0 && <Details scrollY={scrollY} data={data} />}
+      </View>
     </View>
   )
 }
@@ -66,10 +70,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: variables.colors.gray100,
   },
+  body: {
+    backgroundColor: variables.colors.accent,
+  },
+
 
   cardHeader: {
     zIndex: 0,
-    height: 290,
     padding: 24,
     backgroundColor: variables.colors.accent,
   },

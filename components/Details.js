@@ -2,7 +2,6 @@ import React from 'react'
 import {
   View,
   StyleSheet,
-  Animated,
   ScrollView, Text, Image
 } from 'react-native'
 import { variables } from '../theme'
@@ -32,30 +31,12 @@ const Tag = () => {
   )
 }
 
-const Details = ({ details }) => {
+const Details = ({ data }) => {
   return (
-    <Animated.ScrollView
-      showsVerticalScrollIndicator={false}
-      style={{ marginTop: -260, zIndex: 2 }}
-      onScroll={Animated.event(
-        [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-        { useNativeDriver: false }
-      )}
-    >
-      <View style={{ height: 264, display: 'flex' }} />
-
-      <View style={styles.body}>
-        {/* <Animated.Text */}
-        {/*   style={[styles.info, { color: changeColorText(scrollY) }]} */}
-        {/* > */}
-        {/*   Additional Information */}
-        {/* </Animated.Text> */}
-        <Text
-          style={[styles.info, { color: 'red' }]}
-        >
-          Additional Information
-        </Text>
-      </View>
+    <View style={{backgroundColor: variables.colors.gray100}}>
+      <Text style={styles.info} >
+        Additional Information
+      </Text>
 
       <ScrollView
         horizontal
@@ -66,36 +47,28 @@ const Details = ({ details }) => {
         style={{ marginTop: 8 }}
       >
         <CardInfo
-          nameIcon='droplet'
           title='Humidity'
           img={humidity_img}
-          // description='' 
-          value={`${details.humidity ? details.humidity : 0}%`}
+          value={`${data.humidity ? data.humidity : 0}%`}
         />
 
         <CardInfo
-          nameIcon='wind'
-          title='Wind'
-          img={wind_img}
-          // description='' 
-          value={`${details.wind ? details.wind : 0} km/h`}
-        />
-
-        <CardInfo
-          nameIcon='sun'
           title='Visibility'
           img={sun_img}
-          // description='' 
-          value={`${details.visibility ? details.visibility : 0}km`}
+          value={`${data.visibility ? data.visibility : 0}km`}
+        />
+
+        <CardInfo
+          title='Wind'
+          img={wind_img}
+          value={`${data.wind ? data.wind : 0} km/h`}
         />
 
         <View style={{ marginRight: -12 }}>
           <CardInfo
-            nameIcon='cloud'
             title='Clouds'
             img={clouds_img}
-            // description='' 
-            value={`${details.clouds ? details.clouds : 0}%`}
+            value={`${data.clouds ? data.clouds : 0}%`}
           />
         </View>
       </ScrollView>
@@ -105,7 +78,7 @@ const Details = ({ details }) => {
       </View>
 
       <View style={{ height: 64 }} />
-    </Animated.ScrollView>
+    </View>
   )
 }
 
@@ -113,9 +86,7 @@ export default Details
 
 const styles = StyleSheet.create({
   body: {
-    marginBottom: 16,
-    marginLeft: 24,
-    marginRight: 24,
+    marginHorizontal: 24,
   },
 
   info: {
@@ -123,13 +94,14 @@ const styles = StyleSheet.create({
     color: variables.colors.gray500,
     fontFamily: variables.fontFamily.semiBold,
     fontSize: variables.fontSize.h4,
+    marginVertical: 20,
   },
 
   // tag
   contentCard: {
     height: 120,
     justifyContent: 'space-around',
-    backgroundColor: variables.colors.orange500,
+    backgroundColor: variables.colors.accent,
     padding: 26,
     borderRadius: 12,
   },
