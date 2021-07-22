@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: 140,
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: variables.colors.white500,
+    backgroundColor: variables.colors.translucentCard,
     borderRadius: 12,
     padding: 12,
     marginRight: 12,
@@ -44,16 +44,16 @@ const styles = StyleSheet.create({
 
   title: {
     textAlign: 'center',
-    fontFamily: variables.fontFamily.medium,
+    fontFamily: variables.fontFamily.regular,
     fontSize: variables.fontSize.h4,
-    color: variables.colors.gray500,
+    color: variables.colors.white500,
   },
 
   value: {
     textAlign: 'center',
-    fontFamily: variables.fontFamily.bold,
+    fontFamily: variables.fontFamily.semiBold,
     fontSize: variables.fontSize.h2,
-    color: variables.colors.black400,
+    color: variables.colors.white500,
   },
 
   // description: {

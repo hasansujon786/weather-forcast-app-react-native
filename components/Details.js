@@ -33,7 +33,7 @@ const Tag = () => {
 
 const Details = ({ data }) => {
   return (
-    <View style={{backgroundColor: variables.colors.gray100}}>
+    <View style={{}}>
       <Text style={styles.info} >
         Additional Information
       </Text>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
 
   info: {
     textAlign: 'center',
-    color: variables.colors.gray500,
+    color: variables.colors.white500,
     fontFamily: variables.fontFamily.semiBold,
     fontSize: variables.fontSize.h4,
     marginVertical: 20,

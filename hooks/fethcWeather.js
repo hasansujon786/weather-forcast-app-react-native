@@ -28,7 +28,6 @@ function fethcWeather(defaultLocation) {
     } catch (error) {
       setLoading(false)
       setData({})
-      setDetails({})
       setError(true)
       console.log(error)
     }

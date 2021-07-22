@@ -19,6 +19,8 @@ export const variables = {
   },
 
   colors: {
+    imageDrakness: 'rgba(44, 98, 73, 0.4)',
+    translucentCard: 'rgba(44, 98, 73, 0.6)',
     accent: '#5B21B6',
     purple800: '#5B21B6',
     orange500: "#FF7F51",
