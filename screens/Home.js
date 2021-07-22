@@ -31,6 +31,7 @@ const Home = () => {
               <CardStatus error={error} />
             )}
         </View>
+        <View style={{ flex: 1 }} />
         {data.uf?.length > 0 && <Details data={data} />}
       </View>
 

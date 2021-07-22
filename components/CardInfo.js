@@ -33,11 +33,12 @@ export default CardInfo
 const styles = StyleSheet.create({
   contentCard: {
     height: 140,
-    width: 140,
+    width: 110,
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: variables.colors.translucentCard,
-    borderRadius: 12,
+    backgroundColor: '#2c2c2c',
+    backgroundColor: variables.colors.black400,
+    borderRadius: 22,
     padding: 12,
     marginRight: 12,
   },
@@ -45,14 +46,14 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontFamily: variables.fontFamily.regular,
-    fontSize: variables.fontSize.h4,
-    color: variables.colors.white500,
+    fontSize: variables.fontSize.h5,
+    color: variables.colors.gray500,
   },
 
   value: {
     textAlign: 'center',
     fontFamily: variables.fontFamily.semiBold,
-    fontSize: variables.fontSize.h2,
+    fontSize: variables.fontSize.h3,
     color: variables.colors.white500,
   },
 
