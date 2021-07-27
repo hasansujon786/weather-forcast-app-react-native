@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import { Feather as Icon } from '@expo/vector-icons'
 import { variables } from '../theme'
 
-const Header = ({ onToggleSearch }) => {
+const Header = ({ onToggleSearch, showSearch }) => {
   return (
     <View style={styles.header}>
       <Icon
@@ -11,12 +11,20 @@ const Header = ({ onToggleSearch }) => {
         size={22}
         color={variables.colors.white500}
       />
-      <Icon
-        name='search'
-        size={22}
-        color={variables.colors.white500}
-        onPress={() => onToggleSearch(v => !v)}
-      />
+      {showSearch ?
+        <Icon
+          name='x'
+          size={22}
+          color={variables.colors.white500}
+          onPress={() => onToggleSearch(v => !v)}
+        /> :
+        <Icon
+          name='search'
+          size={22}
+          color={variables.colors.white500}
+          onPress={() => onToggleSearch(v => !v)}
+        />
+      }
     </View>
   )
 }

@@ -20,6 +20,13 @@ const SearchBar = ({ onSubmit, loading }) => {
       }}
     >
       <View style={{ width: '78%' }}>
+        <Icon
+          style={styles.iconInput}
+          name='search'
+          color={variables.colors.white500 + '80'}
+          size={22}
+          autoCapitalize='words'
+        />
         <TextInput
           placeholder='Search a city'
           placeholderTextColor={variables.colors.white500 + '80'}
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
     fontFamily: variables.fontFamily.semiBold,
     fontSize: variables.fontSize.h4,
     color: variables.colors.white500,
-    paddingLeft: 20,
+    paddingLeft: 64,
     height: 64,
     borderRadius: 12,
     backgroundColor: variables.colors.white500 + '20',
