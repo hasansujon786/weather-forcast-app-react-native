@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { View, Text, Image, StyleSheet } from 'react-native'
-// import { Feather as Icon } from '@expo/vector-icons'
+import { Feather as Icon } from '@expo/vector-icons'
 
 import { variables } from '../theme'
 
@@ -16,26 +16,20 @@ const CardTop = ({ data }) => {
         />
         <Text style={styles.tem}>{data.temp.toFixed(0)}°</Text>
       </View>
-      <View>
-        <Text style={styles.infoDesc}>Sunny</Text>
-        <Text style={[styles.infoDesc, { fontSize: variables.fontSize.h5 }]}>Noon</Text>
+      <View >
+        <Text style={[styles.infoDesc, { fontSize: variables.fontSize.h3, marginBottom: 1 }]}>{data.weather[0].main}</Text>
+        <View style={[styles.inline, { justifyContent: 'space-between' }]}>
+          <View style={styles.inline}>
+            <Text style={styles.infoDesc}>Min: {Math.floor(data.temp_min)}°</Text>
+            <Text style={[styles.infoDesc, { marginLeft: 6 }]}>Max: {Math.floor(data.temp_max)}°</Text>
+          </View>
+
+          <View style={styles.inline}>
+            <Icon style={{ marginRight: 4, color: variables.colors.white500 }} name='map-pin' />
+            <Text style={styles.infoDesc}>{data.city}, {data.uf}</Text>
+          </View>
+        </View>
       </View>
-
-      {/* <View style={{ flex: 1, alignItems: 'flex-end', marginTop: -90 }}> */}
-      {/*   <View style={{ alignItems: 'center' }}> */}
-      {/*     <Text style={styles.infoDesc}>{data.weather[0].description}</Text> */}
-      {/*   </View> */}
-      {/* </View> */}
-      {/* <View style={[styles.inline, { justifyContent: 'space-between' }]}> */}
-      {/*   <View style={[styles.inline]}> */}
-      {/*     <Info iconName='arrow-down' >Min: {data.temp_min.toFixed(0)}°</Info> */}
-      {/*     <Info style={{ marginLeft: 8 }} iconName='arrow-up' >Max: {data.temp_max.toFixed(0)}°</Info> */}
-      {/*   </View> */}
-
-      {/*   <Info iconName='wind'>Wind: {data.wind ? data.wind : 0}km/h</Info> */}
-      {/* </View> */}
-
-
     </View>
   )
 }
@@ -60,8 +54,8 @@ const styles = StyleSheet.create({
   },
 
   infoDesc: {
-    fontFamily: variables.fontFamily.semiBold,
-    fontSize: variables.fontSize.h2,
+    fontFamily: variables.fontFamily.regular,
+    fontSize: variables.fontSize.h5,
     color: variables.colors.white500,
   },
 
