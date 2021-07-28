@@ -1,6 +1,6 @@
-import { StatusBar } from 'expo-status-bar'
 import AppLoading from 'expo-app-loading'
 import React from 'react'
+import { StatusBar } from 'react-native'
 import Home from './screens/Home'
 import {
   useFonts,

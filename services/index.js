@@ -54,3 +54,16 @@ export default api
 //   "name": "London",
 //   "cod": 200
 // }
+
+// async function getDAta() {
+//   // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+//   const cityName = 'London'
+//   // const res = await api.get(`weather?q=${cityName}`)
+//   // https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key}
+//   const res = await api.get(`onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly`)
+//   console.log(res.data)
+// }
+
+// useEffect(() => {
+//   getDAta()
+// }, [])

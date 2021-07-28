@@ -10,7 +10,7 @@ function fethcWeather(defaultLocation) {
   const getWeatherByCityName = async (cityName) => {
     try {
       setLoading(true)
-      const res = await api.get(`?q=${cityName}`)
+      const res = await api.get(`weather?q=${cityName}`)
       const data = res.data
       setData({
         city: data.name,

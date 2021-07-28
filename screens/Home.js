@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, ImageBackground } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground } from 'react-native'
+import BottomSheet from 'reanimated-bottom-sheet';
 import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated'
 // import { Feather as Icon } from '@expo/vector-icons'
 import fethcWeather from '../hooks/fethcWeather'
@@ -7,13 +8,14 @@ import CardTop from '../components/CardTop'
 import CardStatus from '../components/CardStatus'
 import Clock from '../components/Clock'
 import Header from '../components/Header'
-import Details from '../components/Details'
 import SeachBar from '../components/SearchBar'
+import Details, { BottomSheetHeader } from '../components/Details'
 
 import { variables } from '../theme'
 
 
 const Home = () => {
+  const bottomSheetRef = React.useRef(null);
   const [showSearch, setShowSearch] = useState(false)
   const { getWeatherByCityName, loading, data, error } = fethcWeather('dhaka')
 
@@ -66,8 +68,13 @@ const Home = () => {
             </>
           }
         </Animated.View>
-        <View style={{ flex: 1 }} />
-        {data.uf?.length > 0 && <Details data={data} />}
+
+        <BottomSheet
+          renderHeader={BottomSheetHeader}
+          ref={bottomSheetRef}
+          snapPoints={[200, 400, 50]}
+          renderContent={() => <Details data={data} />}
+        />
       </View>
     </ImageBackground >
   )

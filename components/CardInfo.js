@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: variables.colors.black400,
     borderRadius: 22,
     padding: 12,
-    marginRight: 12,
+    marginBottom: 12,
   },
 
   title: {
