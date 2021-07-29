@@ -1,11 +1,5 @@
 import React, { useState } from 'react'
-import {
-  View,
-  ActivityIndicator,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native'
+import { View, ActivityIndicator, TextInput, TouchableOpacity, StyleSheet, } from 'react-native'
 import { Feather as Icon } from '@expo/vector-icons'
 import { variables } from '../theme'
 
@@ -25,9 +19,10 @@ const SearchBar = ({ onSubmit, loading }) => {
           name='search'
           color={variables.colors.white500 + '80'}
           size={22}
-          autoCapitalize='words'
         />
         <TextInput
+          autoFocus
+          autoCapitalize='words'
           placeholder='Search a city'
           placeholderTextColor={variables.colors.white500 + '80'}
           selectionColor={variables.colors.white500 + '18'}

@@ -5,7 +5,7 @@ function fethcWeather(defaultLocation) {
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const [data, setData] = useState({})
+  const [data, setData] = useState(null)
 
   const getWeatherByCityName = async (cityName) => {
     try {
@@ -27,7 +27,7 @@ function fethcWeather(defaultLocation) {
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      setData({})
+      setData(null)
       setError(true)
       console.log(error)
     }

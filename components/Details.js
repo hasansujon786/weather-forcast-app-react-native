@@ -14,32 +14,31 @@ export const BottomSheetHeader = () => (
   </View>
 )
 
-// {/* {data.uf?.length > 0 && <Details data={data} />} */}
 const Details = ({ data }) => {
   return (
     <View style={styles.sheetBody}>
       <CardInfo
         title='Humidity'
         img={humidity_img}
-        value={`${data.humidity ? data.humidity : 0}%`}
+        value={`${data?.humidity ? data.humidity : 0}%`}
       />
 
       <CardInfo
         title='Visibility'
         img={sun_img}
-        value={`${data.visibility ? data.visibility : 0}km`}
+        value={`${data?.visibility ? data.visibility : 0}km`}
       />
 
       <CardInfo
         title='Wind'
         img={wind_img}
-        value={`${data.wind ? data.wind : 0} km/h`}
+        value={`${data?.wind ? data.wind : 0} km/h`}
       />
 
       <CardInfo
         title='Clouds'
         img={clouds_img}
-        value={`${data.clouds ? data.clouds : 0}%`}
+        value={`${data?.clouds ? data.clouds : 0}%`}
       />
 
       {/* <ScrollView */}

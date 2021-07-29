@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react'
-import { View, Text, StyleSheet, ImageBackground } from 'react-native'
+import { View, StyleSheet, ImageBackground } from 'react-native'
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated'
 // import { Feather as Icon } from '@expo/vector-icons'
@@ -19,7 +19,7 @@ const Home = () => {
 
   const bottomSheetRef = React.useRef(null);
   useLayoutEffect(() => {
-    if (!loading) {
+    if (!loading && data) {
       bottomSheetRef.current.snapTo(showSearch ? 2 : 0)
     }
   }, [showSearch, loading])
@@ -71,7 +71,7 @@ const Home = () => {
             <>
               <Clock />
               <View style={{ margin: 20 }}>
-                {data.uf?.length > 0 ? <CardTop data={data} /> : <CardStatus error={error} />}
+                {data?.uf?.length > 0 ? <CardTop data={data} /> : <CardStatus error={error} />}
               </View>
             </>
           }
