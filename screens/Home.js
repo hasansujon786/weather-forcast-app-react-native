@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { View, Text, StyleSheet, ImageBackground } from 'react-native'
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated'
@@ -13,11 +13,16 @@ import Details, { BottomSheetHeader } from '../components/Details'
 
 import { variables } from '../theme'
 
-
 const Home = () => {
-  const bottomSheetRef = React.useRef(null);
   const [showSearch, setShowSearch] = useState(false)
   const { getWeatherByCityName, loading, data, error } = fethcWeather('dhaka')
+
+  const bottomSheetRef = React.useRef(null);
+  useLayoutEffect(() => {
+    if (!loading) {
+      bottomSheetRef.current.snapTo(showSearch ? 2 : 0)
+    }
+  }, [showSearch, loading])
 
   const handleSubmit = async (name) => {
     await getWeatherByCityName(name)
@@ -51,7 +56,10 @@ const Home = () => {
   return (
     <ImageBackground resizeMode='cover' style={styles.bgImage} source={require('../assets/bg_green.png')} >
       <View style={{ backgroundColor: variables.colors.imageDrakness, flex: 1 }}>
-        <Header showSearch={showSearch} onToggleSearch={(val) => { setShowSearch(val) }} />
+        <Header
+          showSearch={showSearch}
+          onToggleSearch={() => { setShowSearch(v => !v) }}
+        />
         <View style={{ paddingHorizontal: 20 }}>
           <Animated.View style={[rSearchStyles]}>
             {showSearch && <SeachBar loading={loading} onSubmit={handleSubmit} />}
@@ -62,7 +70,7 @@ const Home = () => {
           {!showSearch &&
             <>
               <Clock />
-              <View>
+              <View style={{ margin: 20 }}>
                 {data.uf?.length > 0 ? <CardTop data={data} /> : <CardStatus error={error} />}
               </View>
             </>
@@ -72,7 +80,8 @@ const Home = () => {
         <BottomSheet
           renderHeader={BottomSheetHeader}
           ref={bottomSheetRef}
-          snapPoints={[200, 400, 50]}
+          snapPoints={[200, 400, 40]}
+          initialSnap={2}
           renderContent={() => <Details data={data} />}
         />
       </View>

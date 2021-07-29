@@ -59,12 +59,14 @@ export default Details
 const styles = StyleSheet.create({
   sheetBody: {
     backgroundColor: variables.colors.black300,
-    paddingBottom: 20,
     height: 400,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
+    alignContent: 'flex-start',
     paddingTop: 8,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
 
   sheetHeader: {

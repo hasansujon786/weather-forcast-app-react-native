@@ -16,13 +16,13 @@ const Header = ({ onToggleSearch, showSearch }) => {
           name='x'
           size={22}
           color={variables.colors.white500}
-          onPress={() => onToggleSearch(v => !v)}
+          onPress={onToggleSearch}
         /> :
         <Icon
           name='search'
           size={22}
           color={variables.colors.white500}
-          onPress={() => onToggleSearch(v => !v)}
+          onPress={onToggleSearch}
         />
       }
     </View>

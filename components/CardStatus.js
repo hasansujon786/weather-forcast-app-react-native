@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     height: 260,
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: variables.colors.white500,
+    backgroundColor: variables.colors.translucentCard,
     padding: 36,
     borderRadius: 12,
   },
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: variables.fontFamily.bold_italic,
     fontSize: variables.fontSize.h2,
-    color: variables.colors.black500,
+    color: variables.colors.white500,
     marginBottom: 16,
   },
 
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: variables.fontFamily.regular_italic,
     fontSize: variables.fontSize.h4,
-    color: variables.colors.gray500,
+    color: variables.colors.white500,
   },
 
   img: {
