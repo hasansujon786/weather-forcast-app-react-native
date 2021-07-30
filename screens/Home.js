@@ -15,7 +15,7 @@ import { variables } from '../theme'
 
 const Home = () => {
   const [showSearch, setShowSearch] = useState(false)
-  const { getWeatherByCityName, loading, data, error } = fethcWeather('dhaka')
+  const { getWeatherByCityName, getWeatherByLocation, loading, data, error } = fethcWeather('dhaka')
 
   const bottomSheetRef = React.useRef(null);
   useLayoutEffect(() => {
